@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="JavaNeoUtil:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/JavaNeoUtil_jar</output-path>
+  <artifact type="jar" name="JavaNeoUtil-1.1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaNeoUtil_1_1_jar</output-path>
     <root id="archive" name="JavaNeoUtil.jar">
       <element id="module-output" name="JavaNeoUtil" />
     </root>
