@@ -1,307 +1,225 @@
 package ru.fazziclay.javaneoutil;
 
-/**
-MIT License
-
-Copyright (c) 2022 Mironov Stanislav (FazziCLAY)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-**/
-
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 
 /**
- * Набор утилит для работы с файлами
- * @author FazziCLAY ( https://fazziclay.github.io )
+ * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
  * **/
+@Deprecated
 public class FileUtil {
     /**
-     * Исправить путь Windows-Linux
-     **/
-    private static String fixPathSeparator(@NonNull String path) {
-        return path
-                .replace("/", File.separator)
-                .replace("\\", File.separator);
-    }
-
-    /**
-     * Получить файл из пути, путь чинится Windows-Linux
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static File getFile(String path) {
-        return new File(fixPathSeparator(path));
+        return com.fazziclay.javaneoutil.FileUtil.getFile(path);
     }
 
     /**
-     * <h1>Example</h1>
-     * <p>Input: "/test/owo/f.json"</p>
-     * <p>Output: "/test/owo"</p>
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static String getParentDirOfFile(String path) {
-        path = fixPathSeparator(path);
-        int lastSep = path.lastIndexOf(File.separator);
-        if (lastSep > 0) {
-            return path.substring(0, lastSep) + File.separator;
-        }
-        return File.separator;
+        return com.fazziclay.javaneoutil.FileUtil.getParentDirOfFile(path);
     }
 
     /**
-     * @see FileUtil#getParentDirOfFile(String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static File getParentDirOfFile(File file) {
-        return new File(getParentDirOfFile(fixPathSeparator(file.getAbsolutePath())));
+        return com.fazziclay.javaneoutil.FileUtil.getParentDirOfFile(file);
     }
 
     /**
-     * @see FileUtil#createDirIfNotExists(File)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void createDirIfNotExists(String path) {
-        createDirIfNotExists(getFile(path));
+        com.fazziclay.javaneoutil.FileUtil.createDirIfNotExists(path);
     }
 
     /**
-     * Создать дирректорию если она не существует
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void createDirIfNotExists(File file) {
-        if (!file.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            file.mkdirs();
-        }
+        com.fazziclay.javaneoutil.FileUtil.createDirIfNotExists(file);
     }
 
     /**
-     * @see FileUtil#getParentDirOfFile(File)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void createNewIfNotExist(@NonNull String path) {
-        createNewIfNotExist(getFile(path));
+        com.fazziclay.javaneoutil.FileUtil.createNewIfNotExist(path);
     }
 
     /**
-     * Создать файл, если он существует то ничего не делаем
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void createNewIfNotExist(@NonNull File file) {
-        try {
-            if (!file.exists()) {
-                createDirIfNotExists(getParentDirOfFile(file));
-
-                //noinspection ResultOfMethodCallIgnored
-                file.createNewFile();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Exception while create new file", e);
-        }
+        com.fazziclay.javaneoutil.FileUtil.createNewIfNotExist(file);
     }
 
     /**
-     * @see FileUtil#isExist(File)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static boolean isExist(@NonNull String path) {
-        return isExist(getFile(path));
+        return com.fazziclay.javaneoutil.FileUtil.isExist(path);
     }
 
     /**
-     * Существует ли файл
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static boolean isExist(@NonNull File file) {
-        return file.exists();
+        return com.fazziclay.javaneoutil.FileUtil.isExist(file);
     }
 
     /**
-     * @see FileUtil#getFilesList(File)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static File[] getFilesList(@NonNull String dirPath) {
-        return getFilesList(getFile(dirPath));
+        return com.fazziclay.javaneoutil.FileUtil.getFilesList(dirPath);
     }
 
     /**
-     * Список файлов в дирректории
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static File[] getFilesList(@NonNull File dir) {
-        if (!isExist(dir) || !dir.isDirectory()) {
-            return null;
-        }
-        return dir.listFiles();
+        return com.fazziclay.javaneoutil.FileUtil.getFilesList(dir);
     }
 
+    /**
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void delete(@NonNull String path) {
-        delete(getFile(path));
+        com.fazziclay.javaneoutil.FileUtil.delete(path);
     }
 
     /**
-     * Если файл, то удаляет
-     * Если папка, то удаляет (рекурсивно)
-     * #RECURSION
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void delete(@NonNull File path) {
-        if (path.isDirectory()) {
-            File[] children = getFilesList(path);
-            if (children != null) {
-                for (File child : children) {
-                    delete(child);
-                }
-            }
-            path.delete();
-
-        } else if (path.isFile()) {
-            path.delete();
-        }
+        com.fazziclay.javaneoutil.FileUtil.delete(path);
     }
 
     /**
-     * @see FileUtil#writeText(File, boolean, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void writeText(@NonNull String path, boolean append, String text) {
-        writeText(getFile(path), append, text);
+        com.fazziclay.javaneoutil.FileUtil.writeText(path, append, text);
     }
 
     /**
-     * Записывает текст в файл, если нету то создаст
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void writeText(@NonNull File file, boolean append, String text) {
-        createNewIfNotExist(file);
-        try {
-            final FileWriter fileWriter = new FileWriter(file, append);
-            fileWriter.write(text);
-            fileWriter.flush();
-            fileWriter.close();
-
-        } catch (Exception e) {
-            throw new RuntimeException("Exception while write text to file", e);
-        }
+        com.fazziclay.javaneoutil.FileUtil.writeText(file, append, text);
     }
 
     /**
-     * @see FileUtil#setText(File, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void setText(@NonNull String path, String text) {
-        setText(getFile(path), text);
+        com.fazziclay.javaneoutil.FileUtil.setText(path, text);
     }
 
     /**
-     * Ставит в файл текст
-     *
-     * @see #writeText(File, boolean, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void setText(@NonNull File file, String text) {
-        writeText(file, false, text);
+        com.fazziclay.javaneoutil.FileUtil.setText(file, text);
     }
 
     /**
-     * @see #addText(File, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void addText(@NonNull String path, String text) {
-        addText(getFile(path), text);
+        com.fazziclay.javaneoutil.FileUtil.addText(path, text);
     }
 
     /**
-     * Добавляет в файл текст в конец
-     *
-     * @see #writeText(File, boolean, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static void addText(@NonNull File file, String text) {
-        writeText(file, true, text);
+        com.fazziclay.javaneoutil.FileUtil.addText(file, text);
     }
 
     /**
-     * @see #getText(File, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static String getText(@NonNull String path, String defaultValue) {
-        return getText(getFile(path), defaultValue);
+        return com.fazziclay.javaneoutil.FileUtil.getText(path, defaultValue);
     }
 
     /**
-     * Получить текст из файла, если файла нету то возвращаем defaultValue
-     * если файла не существует, то и не создаём его!
-     *
-     * @param defaultValue вывод если файла не существует
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static String getText(@NonNull File file, String defaultValue) {
-        if (!isExist(file)) {
-            return defaultValue;
-        }
-
-        try {
-            final StringBuilder result = new StringBuilder();
-            final FileReader fileReader = new FileReader(file);
-
-            final char[] buff = new char[1024];
-
-            int i;
-            while ((i = fileReader.read(buff)) > 0) {
-                result.append(new String(buff, 0, i));
-            }
-
-            fileReader.close();
-            return result.toString();
-
-        } catch (Exception e) {
-            throw new RuntimeException("Exception while get file text", e);
-        }
+        return com.fazziclay.javaneoutil.FileUtil.getText(file, defaultValue);
     }
 
     /**
-     * @see #getText(File)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static String getText(String path) {
-        return getText(getFile(path));
+        return com.fazziclay.javaneoutil.FileUtil.getText(path);
     }
 
     /**
-     * if file not exist: return null
-     *
-     * @see #getText(String, String)
-     **/
+     * @deprecated use new FileUtil in {@link com.fazziclay.javaneoutil.FileUtil}
+     * **/
+    @Deprecated
     public static String getText(File file) {
-        return getText(file, null);
+        return com.fazziclay.javaneoutil.FileUtil.getText(file);
     }
 
 
     // == DEPRECATED ==
     @Deprecated
     public static void write(File file, String content) {
-        write(file.getAbsolutePath(), content);
+        com.fazziclay.javaneoutil.FileUtil.write(file, content);
     }
 
     @Deprecated
     public static void write(String path, String content) {
-        setText(getFile(path), content);
+        com.fazziclay.javaneoutil.FileUtil.write(path, content);
     }
 
     @Deprecated
     public static String read(File file, String defaultValue) {
-        return read(file.getAbsolutePath(), defaultValue);
+        return com.fazziclay.javaneoutil.FileUtil.read(file, defaultValue);
     }
 
     @Deprecated
     public static String read(String path) {
-        return read(path, null);
+        return com.fazziclay.javaneoutil.FileUtil.read(path);
     }
 
     @Deprecated
     public static String read(String path, String defaultValue) {
-        return getText(getFile(path), defaultValue);
+        return com.fazziclay.javaneoutil.FileUtil.read(path, defaultValue);
     }
 
     @Deprecated
     public static void deleteDir(File dir) {
-        delete(dir);
+        com.fazziclay.javaneoutil.FileUtil.deleteDir(dir);
     }
 }

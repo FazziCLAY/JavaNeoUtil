@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FakeBukkitApi-jdk11-version1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/FakeBukkitApi-jdk11-version1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
